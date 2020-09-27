@@ -1,14 +1,19 @@
-A = fopen('Text_File.txt');
-formatSpec = '%f';
-mas = fscanf(A,formatSpec);
+
 q1 = 0;q2 = 0; q3 = 0; q4 =0; q5 = 0; q6 = 0;
 %syms q1 q2 q3 q4 q5 q6 L1 L2 L3;
-test_file = fopen('Test_FK.txt');
+test_file = fopen('Text_File.txt');
+
+while ~feof(test_file)
+    tline = fgetl(test_file);
+    tline = str2num(tline);
+    M = Matrix(tline(1),tline(2),tline(3),tline(4),tline(5),tline(6));
+end
 
 % close the file
-M = Matrix(q1,q2,q3,q4,q5,q6)
+fclose(test_file);
+% close the file
 function M = Matrix(q1,q2,q3,q4,q5,q6)
-L1 = 10; L2 =10; L3 = 10;
+L1 = 280; L2 =280; L3 = 105.5;
 RzQ1 = [cos(q1) -sin(q1) 0 0;%rotation z on q1
         sin(q1) cos(q1) 0 0; 
         0 0 1 0; 
